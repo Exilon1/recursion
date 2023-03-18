@@ -1,6 +1,7 @@
 public class Main {
     public static void main(String[] args) {
         System.out.println("exponent = " + exponentiation(2, 3));
+        System.out.println("sumOfDigits = " + sumOfDigits(123));
     }
 
     public static int exponentiation(int number, int exponent) {
@@ -17,5 +18,13 @@ public class Main {
         }
 
         return number * exponentiation(number, exponent - 1);
+    }
+
+    public static int sumOfDigits(int number) {
+        if (number < 10) {
+            return number;
+        }
+
+        return number % 10 + sumOfDigits(number/10);
     }
 }
