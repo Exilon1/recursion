@@ -47,7 +47,7 @@ public class Main {
     public static boolean validPalindrome(String s) {
         String string = s.toLowerCase();
 
-        if (s.isBlank()) {
+        if (string.isBlank()) {
             return true;
         }
 
