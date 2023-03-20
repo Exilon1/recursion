@@ -47,13 +47,13 @@ public class Main {
     public static boolean validPalindrome(String s) {
         String string = s.toLowerCase();
 
-        LinkedList<Character> deque = string.chars().mapToObj(
-                c -> (char) c).collect(Collectors.toCollection(LinkedList::new)
-        );
-
         if (s.isBlank()) {
             return true;
         }
+
+        LinkedList<Character> deque = string.chars().mapToObj(
+                c -> (char) c).collect(Collectors.toCollection(LinkedList::new)
+        );
 
         Character left;
         try {
