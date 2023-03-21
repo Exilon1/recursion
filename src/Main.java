@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -78,27 +79,31 @@ public class Main {
             return;
         }
 
-        Integer val = numberList.remove(0);
+        List<Integer> numberCopyList = new ArrayList<>(numberList);
+
+        Integer val = numberCopyList.remove(0);
         if (val % 2 == 0) {
             System.out.println("even number = " + val);
         }
 
-        printEvenNumbersOnly(numberList);
+        printEvenNumbersOnly(numberCopyList);
     }
 
-    public static void printValuesWithEvenIndexes(List<Integer> numberList, int startIndex) {
-        if (numberList.isEmpty()) {
+    public static void printValuesWithEvenIndexes(List<Integer> numberList) {
+        if (numberList.size() < 3) {
             return;
         }
 
-        if (numberList.size() <= startIndex || startIndex < 0) {
-            throw new IndexOutOfBoundsException();
+        List<Integer> numberCopyList = new ArrayList<>(numberList);
+
+        System.out.println("number with even index = " + numberCopyList.remove(2));
+
+        if (numberCopyList.size() < 4) {
+            return;
         }
 
-        if (startIndex != 0 && startIndex % 2 == 0) {
-            System.out.println("number with even index = " + numberList.get(startIndex));
-        }
+        numberCopyList.remove(2);
 
-        printValuesWithEvenIndexes(numberList, startIndex + 1);
+        printValuesWithEvenIndexes(numberList);
     }
 }
