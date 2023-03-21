@@ -91,7 +91,7 @@ public class Main {
             return;
         }
 
-        if (numberList.size() - 1 < startIndex || startIndex < 0) {
+        if (numberList.size() <= startIndex || startIndex < 0) {
             throw new IndexOutOfBoundsException();
         }
 
