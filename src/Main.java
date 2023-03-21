@@ -1,4 +1,5 @@
 import java.util.LinkedList;
+import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
@@ -70,5 +71,34 @@ public class Main {
         }
 
         return left.equals(right) && validPalindrome(s.substring(1, s.length()-1));
+    }
+
+    public static void printEvenNumbersOnly(List<Integer> numberList) {
+        if (numberList.isEmpty()) {
+            return;
+        }
+
+        Integer val = numberList.remove(0);
+        if (val % 2 == 0) {
+            System.out.println("even number = " + val);
+        }
+
+        printEvenNumbersOnly(numberList);
+    }
+
+    public static void printValuesWithEvenIndexes(List<Integer> numberList, int startIndex) {
+        if (numberList.isEmpty()) {
+            return;
+        }
+
+        if (numberList.size() - 1 < startIndex || startIndex < 0) {
+            throw new IndexOutOfBoundsException();
+        }
+
+        if (startIndex != 0 && startIndex % 2 == 0) {
+            System.out.println("number with even index = " + numberList.get(startIndex));
+        }
+
+        printValuesWithEvenIndexes(numberList, startIndex + 1);
     }
 }
