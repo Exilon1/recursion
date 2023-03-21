@@ -79,12 +79,8 @@ public class Main {
     }
 
     private static void printEvenNumbersOnly(List<Integer> numberList, int index) {
-        if (numberList.isEmpty()) {
+        if (numberList.size() <= index || index < 0) {
             return;
-        }
-
-        if (numberList.size() - 1 < index || index < 0) {
-            throw new IndexOutOfBoundsException();
         }
 
         Integer val = numberList.get(0);
@@ -92,7 +88,7 @@ public class Main {
             System.out.println("even number = " + val);
         }
 
-        printEvenNumbersOnly(numberList, index);
+        printEvenNumbersOnly(numberList, index + 1);
     }
 
     public static void printValuesWithEvenIndexes(List<Integer> numberList) {
@@ -100,18 +96,12 @@ public class Main {
     }
 
     private static void printValuesWithEvenIndexes(List<Integer> numberList, int index) {
-        if (numberList.isEmpty()) {
+        if (numberList.size() <= index || index < 0) {
             return;
         }
 
-        if (numberList.size() - 1 < index || index < 0) {
-            throw new IndexOutOfBoundsException();
-        }
+        System.out.println("number with even index = " + numberList.get(index));
 
-        if (index != 0 && index % 2 == 0) {
-            System.out.println("number with even index = " + numberList.get(index));
-        }
-
-        printValuesWithEvenIndexes(numberList, startIndex + 1);
+        printValuesWithEvenIndexes(numberList, index + 2);
     }
 }
