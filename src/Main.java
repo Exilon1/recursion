@@ -96,7 +96,7 @@ public class Main {
     }
 
     private static void printValuesWithEvenIndexes(List<Integer> numberList, int index) {
-        if (numberList.size() <= index || index < 0) {
+        if (numberList.size() >= 2 && (numberList.size() <= index || index < 0)) {
             return;
         }
 
