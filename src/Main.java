@@ -92,7 +92,7 @@ public class Main {
     }
 
     public static void printValuesWithEvenIndexes(List<Integer> numberList) {
-        printValuesWithEvenIndexes(numberList, 2);
+        printValuesWithEvenIndexes(numberList, 0);
     }
 
     private static void printValuesWithEvenIndexes(List<Integer> numberList, int index) {
