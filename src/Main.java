@@ -1,3 +1,4 @@
+import java.io.File;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -130,5 +131,26 @@ public class Main {
         }
 
         return secondMaxValue(numberList, maxValue, secondMaxValue, index + 1);
+    }
+
+    public static List<File> findFiles(String dirPath) {
+        List<File> files = new ArrayList<>();
+
+        findFiles(new File(dirPath), files);
+
+        return files;
+    }
+
+    public static void findFiles(File currentFile, List<File> files) {
+        if (currentFile.isFile()) {
+            files.add(currentFile);
+            return;
+        }
+
+        if (currentFile.isDirectory()) {
+            for (File file : Objects.requireNonNull(currentFile.listFiles())) {
+                findFiles(file, files);
+            }
+        }
     }
 }
