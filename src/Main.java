@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class Main {
@@ -20,6 +21,7 @@ public class Main {
         System.out.println("S >> "
                 + validPalindrome("S"));
 
+        System.out.println("secondMaxValue = " + secondMaxValue(List.of(5,2,3,1)));
     }
 
     public static int exponentiation(int number, int exponent) {
@@ -83,7 +85,7 @@ public class Main {
             return;
         }
 
-        Integer val = numberList.get(0);
+        Integer val = numberList.get(index);
         if (val % 2 == 0) {
             System.out.println("even number = " + val);
         }
@@ -103,5 +105,30 @@ public class Main {
         System.out.println("number with even index = " + numberList.get(index));
 
         printValuesWithEvenIndexes(numberList, index + 2);
+    }
+
+    public static Integer secondMaxValue(List<Integer> numberList) {
+        return secondMaxValue(numberList, Integer.MIN_VALUE, Integer.MIN_VALUE,  0);
+    }
+
+    private static int secondMaxValue(List<Integer> numberList,
+                                          int maxValue, int secondMaxValue, int index) {
+        if (numberList.isEmpty()) {
+            return Integer.MIN_VALUE;
+        }
+
+        if (index >= numberList.size()) {
+            return secondMaxValue;
+        }
+
+        Integer val = numberList.get(index);
+        if (val == maxValue) {
+            secondMaxValue = val;
+        }
+        if (val > maxValue) {
+            maxValue = val;
+        }
+
+        return secondMaxValue(numberList, maxValue, secondMaxValue, index + 1);
     }
 }
