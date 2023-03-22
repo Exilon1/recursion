@@ -141,7 +141,7 @@ public class Main {
         return files;
     }
 
-    public static void findFiles(File currentFile, List<File> files) {
+    private static void findFiles(File currentFile, List<File> files) {
         if (currentFile.isFile()) {
             files.add(currentFile);
             return;
