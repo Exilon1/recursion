@@ -22,7 +22,10 @@ public class Main {
         System.out.println("S >> "
                 + validPalindrome("S"));
 
-        System.out.println("secondMaxValue = " + secondMaxValue(List.of(1,2,3,5,7,7,6)));
+        System.out.println("secondMaxValue = " + secondMaxValue(List.of(7,4,3,2,5)));
+        System.out.println("secondMaxValue = " + secondMaxValue(List.of(7,4,3,7,5)));
+        System.out.println("secondMaxValue = " + secondMaxValue(List.of(7,5)));
+        System.out.println("secondMaxValue = " + secondMaxValue(List.of(5,7)));
     }
 
     public static int exponentiation(int number, int exponent) {
@@ -123,29 +126,31 @@ public class Main {
         }
 
         Integer val = numberList.get(index);
-        if (val == maxValue) {
+        if (val == maxValue || val > secondMaxValue) {
             secondMaxValue = val;
         }
         if (val > maxValue) {
+            secondMaxValue = maxValue;
             maxValue = val;
-            secondMaxValue = Integer.MIN_VALUE;
         }
 
         return secondMaxValue(numberList, maxValue, secondMaxValue, index + 1);
     }
 
     public static List<File> findFiles(String dirPath) {
-      return findFiles(new File(dirPath), new ArrayList<>());
+      return findFiles(new File(dirPath));
     }
 
-    private static List<File> findFiles(File currentFile, List<File> files) {
+    private static List<File> findFiles(File currentFile) {
+        List<File> files = new ArrayList<>();
+
         if (currentFile.isFile()) {
             files.add(currentFile);
         }
 
         if (currentFile.isDirectory()) {
             for (File file : Objects.requireNonNull(currentFile.listFiles())) {
-                findFiles(file, files);
+                files.addAll(findFiles(file));
             }
         }
 
