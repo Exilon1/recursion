@@ -117,7 +117,7 @@ public class Main {
 
     private static int secondMaxValue(List<Integer> numberList,
                                           int maxValue, int secondMaxValue, int index) {
-        if (numberList.isEmpty()) {
+        if (numberList.size() < 2) {
             return Integer.MIN_VALUE;
         }
 
