@@ -22,7 +22,7 @@ public class Main {
         System.out.println("S >> "
                 + validPalindrome("S"));
 
-        System.out.println("secondMaxValue = " + secondMaxValue(List.of(5,2,3,1)));
+        System.out.println("secondMaxValue = " + secondMaxValue(List.of(1,2,3,5,7,7,6)));
     }
 
     public static int exponentiation(int number, int exponent) {
@@ -128,23 +128,19 @@ public class Main {
         }
         if (val > maxValue) {
             maxValue = val;
+            secondMaxValue = Integer.MIN_VALUE;
         }
 
         return secondMaxValue(numberList, maxValue, secondMaxValue, index + 1);
     }
 
     public static List<File> findFiles(String dirPath) {
-        List<File> files = new ArrayList<>();
-
-        findFiles(new File(dirPath), files);
-
-        return files;
+      return findFiles(new File(dirPath), new ArrayList<>());
     }
 
-    private static void findFiles(File currentFile, List<File> files) {
+    private static List<File> findFiles(File currentFile, List<File> files) {
         if (currentFile.isFile()) {
             files.add(currentFile);
-            return;
         }
 
         if (currentFile.isDirectory()) {
@@ -152,5 +148,7 @@ public class Main {
                 findFiles(file, files);
             }
         }
+
+        return files;
     }
 }
