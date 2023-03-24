@@ -26,6 +26,10 @@ public class Main {
         System.out.println("secondMaxValue = " + secondMaxValue(List.of(7,4,3,7,5)));
         System.out.println("secondMaxValue = " + secondMaxValue(List.of(7,5)));
         System.out.println("secondMaxValue = " + secondMaxValue(List.of(5,7)));
+
+        System.out.println("generateSequence: ");
+        System.out.println("generateSequence: ");
+        generateSequence(2, 0, 0, "");
     }
 
     public static int exponentiation(int number, int exponent) {
@@ -155,5 +159,20 @@ public class Main {
         }
 
         return files;
+    }
+
+    public static void generateSequence(int n, int counterOpen, int counterClose, String sequence) {
+        if (counterOpen + counterClose == 2 * n) {
+            System.out.println(sequence);
+            return;
+        }
+
+        if (counterOpen < n) {
+            generateSequence(n, counterOpen + 1, counterClose, sequence + "(");
+        }
+
+        if (counterOpen > counterClose) {
+            generateSequence(n, counterOpen, counterClose + 1, sequence + ")");
+        }
     }
 }
