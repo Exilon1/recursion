@@ -81,7 +81,11 @@ public class Main {
             return true;
         }
 
-        return left.equals(right) && validPalindrome(s.substring(1, s.length()-1));
+        if (! left.equals(right)) {
+            return false;
+        }
+
+        return validPalindrome(s.substring(1, s.length()-1));
     }
 
     public static void printEvenNumbersOnly(List<Integer> numberList) {
